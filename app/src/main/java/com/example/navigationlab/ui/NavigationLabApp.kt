@@ -80,6 +80,7 @@ fun NavigationLabApp(model: LabViewModel) {
                 )
                 AppDestinations.MESSAGE -> MessageScreen(
                     changed = state.messageChanged,
+                    libraryItems = state.libraryItems,
                     onChange = model::toggleMessage,
                     modifier = screenModifier,
                 )

@@ -8,4 +8,5 @@ data class LabState(
     val count: Int = 0,
     val messageChanged: Boolean = false,
     val score: Int = 0,
+    val libraryItems: List<LibraryItem> = emptyList(),
 )

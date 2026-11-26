@@ -3,14 +3,18 @@ package com.example.navigationlab.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.navigationlab.model.LabState
 import com.example.navigationlab.navigation.AppDestinations
+import com.example.navigationlab.repository.DemoLibraryRepository
+import com.example.navigationlab.repository.LibraryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class LabViewModel : ViewModel() {
+class LabViewModel(
+    repository: LibraryRepository = DemoLibraryRepository(),
+) : ViewModel() {
     // Змінювати стан може тільки ViewModel.
-    private val _state = MutableStateFlow(LabState())
+    private val _state = MutableStateFlow(LabState(libraryItems = repository.getItems()))
 
     // Інтерфейс отримує стан лише для читання.
     val state: StateFlow<LabState> = _state.asStateFlow()
